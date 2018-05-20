@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class LookAt_Script : MonoBehaviour
 {
+    //look at mouse varibles
     private Camera mainCamera;
 
 
     void Start ()
     {
+        //finds the main camera
         mainCamera = FindObjectOfType<Camera>();
     }
 	

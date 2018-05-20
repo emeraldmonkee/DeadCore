@@ -28,6 +28,6 @@ public class Move_Script : MonoBehaviour
         controller.Move(moveDirection * Time.deltaTime);
 
         //Sets camera position
-        playerCam.transform.position = new Vector3(transform.position.x, 10, transform.position.z);
+        playerCam.transform.position = new Vector3(transform.position.x, 15, transform.position.z);
     }
 }
