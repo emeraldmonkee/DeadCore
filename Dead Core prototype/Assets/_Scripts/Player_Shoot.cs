@@ -18,7 +18,6 @@ public class Player_Shoot : MonoBehaviour
         if (Input.GetButtonDown("Fire1"))
         {
             Shoot();
-            Debug.Log("");
         }
 	}
 
@@ -27,7 +26,15 @@ public class Player_Shoot : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(muzzle.transform.position, muzzle.transform.forward, out hit))
         {
-            Debug.Log(hit.transform.name);
+            if(hit.transform.tag == "Enemy")
+            {
+                Debug.Log("You hit the enemy");
+                hit.transform.GetComponent<Enemy_Health>().TakeDamage(damage);
+            }
+            else
+            {
+                Debug.Log("You missed the enemy");
+            }
         }
     }
 }

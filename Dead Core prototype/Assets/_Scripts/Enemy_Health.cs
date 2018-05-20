@@ -1,17 +1,24 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Health : MonoBehaviour
 {
 
-	void Start ()
+    public float health = 50f;
+
+    public void TakeDamage(float amaount)
     {
-		
-	}
-	
-	void Update ()
+        health -= amaount;
+        if(health <= 0)
+        {
+            Die();
+        }
+    }
+
+    void Die()
     {
-		
-	}
+        Destroy(this.gameObject);
+    }
 }
