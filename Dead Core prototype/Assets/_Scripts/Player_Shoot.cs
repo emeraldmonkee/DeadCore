@@ -29,7 +29,7 @@ public class Player_Shoot : MonoBehaviour
             if(hit.transform.tag == "Enemy")
             {
                 Debug.Log("You hit the enemy");
-                hit.transform.GetComponent<Enemy_Health>().TakeDamage(damage);
+                hit.transform.GetComponent<Health>().TakeDamage(damage);
             }
             else
             {
