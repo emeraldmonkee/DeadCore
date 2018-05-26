@@ -301,11 +301,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Basic_Enemy_Navigation.cs" />
-    <Compile Include="Assets\_Scripts\Enemy_Health.cs" />
+    <Compile Include="Assets\_Scripts\Button_Manager.cs" />
+    <Compile Include="Assets\_Scripts\Health.cs" />
+    <Compile Include="Assets\_Scripts\Inventory.cs" />
     <Compile Include="Assets\_Scripts\Laser_Script.cs" />
     <Compile Include="Assets\_Scripts\LookAt_Script.cs" />
     <Compile Include="Assets\_Scripts\Move_Script.cs" />
     <Compile Include="Assets\_Scripts\Player_Shoot.cs" />
+    <Compile Include="Assets\_Scripts\Weapon.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="C:\Users\Matthew Stageman\AppData\Local\Unity\cache\packages\packages.unity.com\com.unity.package-manager-ui@1.8.8\Editor\Resources\Styles\Main_Dark.uss" />

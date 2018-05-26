@@ -13,7 +13,6 @@ public class Move_Script : MonoBehaviour
 
     void Start()
     {
-        CharacterController controller = GetComponent<CharacterController>();
         playerCam = FindObjectOfType<Camera>();
     }
 
