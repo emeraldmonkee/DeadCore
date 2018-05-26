@@ -33,7 +33,7 @@ public class Player_Shoot : MonoBehaviour
             }
             else
             {
-                Debug.Log("You missed the enemy");
+                Debug.Log("You missed the enemy"); //This isnt displaying, probably because it's not hitting anything, nothing to compare against
             }
         }
     }
