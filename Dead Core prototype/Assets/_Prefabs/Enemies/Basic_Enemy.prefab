@@ -41,7 +41,8 @@ GameObject:
   - component: {fileID: 136378856233813126}
   - component: {fileID: 195480129998731742}
   - component: {fileID: 114132529421969972}
-  - component: {fileID: 114215842673689126}
+  - component: {fileID: 114020715108903148}
+  - component: {fileID: 114716021423086204}
   m_Layer: 0
   m_Name: Basic_Enemy
   m_TagString: Enemy
@@ -141,6 +142,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1502150599992164}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114020715108903148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502150599992164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff110e6c863f68448a9207cd956af58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageToPlayer: 10
+  secondsToWait: 1
+  canDamage: 0
+  damageRadius: 2
 --- !u!114 &114132529421969972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,19 +171,6 @@ MonoBehaviour:
   detected: 0
   detectionRange: 4
   playerPosition: {fileID: 0}
---- !u!114 &114215842673689126
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1502150599992164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5fad949cbdcf9649986171caeec89f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startHealth: 50
-  healthBar: {fileID: 114372447996443458}
 --- !u!114 &114372447996443458
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -195,6 +198,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 1
+--- !u!114 &114716021423086204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1502150599992164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 743377026ce056b4eabfc144b035b869, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startHealth: 50
+  healthBar: {fileID: 114372447996443458}
 --- !u!114 &114782778668015828
 MonoBehaviour:
   m_ObjectHideFlags: 1

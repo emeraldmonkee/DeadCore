@@ -300,15 +300,17 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\_Scripts\Basic_Enemy_Damage.cs" />
     <Compile Include="Assets\_Scripts\Basic_Enemy_Navigation.cs" />
     <Compile Include="Assets\_Scripts\Basic_Spawner.cs" />
     <Compile Include="Assets\_Scripts\Button_Manager.cs" />
+    <Compile Include="Assets\_Scripts\Enemy_Health.cs" />
     <Compile Include="Assets\_Scripts\FreezeCanvasRotation.cs" />
-    <Compile Include="Assets\_Scripts\Health.cs" />
     <Compile Include="Assets\_Scripts\Inventory.cs" />
     <Compile Include="Assets\_Scripts\Laser_Script.cs" />
     <Compile Include="Assets\_Scripts\LookAt_Script.cs" />
     <Compile Include="Assets\_Scripts\Move_Script.cs" />
+    <Compile Include="Assets\_Scripts\Player_Health.cs" />
     <Compile Include="Assets\_Scripts\Player_Shoot.cs" />
     <Compile Include="Assets\_Scripts\Weapon.cs" />
   </ItemGroup>
