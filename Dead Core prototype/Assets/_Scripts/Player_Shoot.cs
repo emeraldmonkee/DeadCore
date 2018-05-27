@@ -30,10 +30,12 @@ public class Player_Shoot : MonoBehaviour
             {
                 Debug.Log("You hit the enemy");
                 hit.transform.GetComponent<Health>().TakeDamage(damage);
+                //used to make the enemy, that has been hit, aware of the player.
+                hit.transform.GetComponent<Basic_Enemy_Navigation>().detected = true;
             }
             else
             {
-                Debug.Log("You missed the enemy"); //This isnt displaying, probably because it's not hitting anything, nothing to compare against
+                Debug.Log("You missed the enemy"); //This isnt displaying, probably because it's not hitting anything, nothing to compare against (EDIT: I knew that, i was just putting in a fit just incase)
             }
         }
     }
