@@ -302,7 +302,6 @@
   <ItemGroup>
     <Compile Include="Assets\_Scripts\Basic_Enemy_Damage.cs" />
     <Compile Include="Assets\_Scripts\Basic_Enemy_Navigation.cs" />
-    <Compile Include="Assets\_Scripts\Basic_Spawner.cs" />
     <Compile Include="Assets\_Scripts\Button_Manager.cs" />
     <Compile Include="Assets\_Scripts\Enemy_Health.cs" />
     <Compile Include="Assets\_Scripts\FreezeCanvasRotation.cs" />

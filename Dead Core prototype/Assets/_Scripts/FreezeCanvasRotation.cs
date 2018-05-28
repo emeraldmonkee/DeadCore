@@ -15,6 +15,6 @@ public class FreezeCanvasRotation : MonoBehaviour
 	void FixedUpdate()
     {
         transform.rotation = rotation;
-        transform.position = gameObject.transform.parent.position;
+        transform.position = gameObject.transform.parent.position + new Vector3(0,1,0);
 	}
 }

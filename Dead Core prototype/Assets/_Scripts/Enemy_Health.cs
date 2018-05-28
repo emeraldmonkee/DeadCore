@@ -14,14 +14,17 @@ public class Enemy_Health : MonoBehaviour
     private float health;
 
     public Image healthBar;
+    public GameObject enemyCanvas;
 
     public void Start()
     {
+        enemyCanvas.SetActive(false);
         health = startHealth;
     }
 
     public void TakeDamage(float amount)
     {
+        StartCoroutine(HealthBarFlash());
         health -= amount;
         UpdateHealthBar();
         if (health <= 0)
@@ -53,5 +56,11 @@ public class Enemy_Health : MonoBehaviour
         {
             healthBar.color = Color.red;
         }
+    }
+    public IEnumerator HealthBarFlash()
+    {
+        enemyCanvas.SetActive(true);
+        yield return new WaitForSeconds(3);
+        enemyCanvas.SetActive(false);
     }
 }

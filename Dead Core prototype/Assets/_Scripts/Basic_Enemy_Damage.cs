@@ -38,7 +38,6 @@ public class Basic_Enemy_Damage : MonoBehaviour
         {
             if (hitReset == 1)
             {
-                Debug.Log("Reeee");
                 StartCoroutine(DamageRateWait());
             }
         }
