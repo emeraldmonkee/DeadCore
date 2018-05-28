@@ -864,6 +864,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 1238715892952440, guid: cd953ea091ab80c4ab1b7b98d586b580, type: 2}
+      propertyPath: m_TagString
+      value: HP_Small
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cd953ea091ab80c4ab1b7b98d586b580, type: 2}
   m_IsPrefabParent: 0

@@ -33,6 +33,10 @@ public class Player_Health : MonoBehaviour
     public void IncreaseHealth(float amount) //Call this when health pickup is collided
     {
         health += amount;
+        if (health >= maxHealth)
+        {
+            health = maxHealth;
+        } 
         UpdateHealthBar();
     }
 

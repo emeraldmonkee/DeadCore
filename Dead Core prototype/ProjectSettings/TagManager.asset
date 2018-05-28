@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Enemy
+  - HP_Small
+  - HP_Large
   layers:
   - Default
   - TransparentFX
