@@ -10,14 +10,14 @@ public class Player_Health : MonoBehaviour
     //Figure out a way to stop canvas rotating - Sort of done but not perfect yet, perhaps find altrnative or updated solution - see FreezeCanvasRotation script
     //Add health pickup, remember to call the function below
 
-    public float startHealth;
-    private float health;
+    public float maxHealth;
+    public float health;
 
     public Image healthBar;
 
     public void Start()
     {
-        health = startHealth;
+        health = maxHealth;
     }
 
     public void TakeDamage(float amount)
@@ -43,7 +43,7 @@ public class Player_Health : MonoBehaviour
 
     private void UpdateHealthBar() //Call this whenever the health is affected, from damage or health increases
     {
-        healthBar.fillAmount = health / startHealth;
+        healthBar.fillAmount = health / maxHealth;
 
         if (healthBar.fillAmount >= 0.5)
         {
