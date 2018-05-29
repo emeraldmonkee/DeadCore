@@ -7,6 +7,7 @@ public class Player_Shoot : MonoBehaviour
     public float damage = 10;
 
     public GameObject muzzle;
+    public GameObject impact_Prefab;
 
 	void Start ()
     {
@@ -26,6 +27,8 @@ public class Player_Shoot : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(muzzle.transform.position, muzzle.transform.forward, out hit))
         {
+            
+            Object.Instantiate(impact_Prefab, hit.transform);
             if(hit.transform.tag == "Enemy")
             {
                 Debug.Log("You hit the enemy");
