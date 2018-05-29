@@ -13,6 +13,9 @@ public class Enemy_Health : MonoBehaviour
     public float startHealth;
     private float health;
 
+    [SerializeField]
+    private float hp_Flash = 0;
+
     public Image healthBar;
     public GameObject enemyCanvas;
 
@@ -24,12 +27,26 @@ public class Enemy_Health : MonoBehaviour
 
     public void TakeDamage(float amount)
     {
-        StartCoroutine(HealthBarFlash());
+        hp_Flash = 3;
         health -= amount;
         UpdateHealthBar();
         if (health <= 0)
         {
             Die();
+        }
+    }
+
+    void Update()
+    {
+        hp_Flash -= Time.deltaTime;
+        if (hp_Flash > 0)
+        {
+            enemyCanvas.SetActive(true);
+        }
+        else
+        {
+            hp_Flash = 0;
+            enemyCanvas.SetActive(false);
         }
     }
 
@@ -56,11 +73,5 @@ public class Enemy_Health : MonoBehaviour
         {
             healthBar.color = Color.red;
         }
-    }
-    public IEnumerator HealthBarFlash()
-    {
-        enemyCanvas.SetActive(true);
-        yield return new WaitForSeconds(3);
-        enemyCanvas.SetActive(false);
     }
 }
