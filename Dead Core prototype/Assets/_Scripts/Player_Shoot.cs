@@ -36,6 +36,10 @@ public class Player_Shoot : MonoBehaviour
                 //used to make the enemy, that has been hit, aware of the player.
                 hit.transform.GetComponent<Basic_Enemy_Navigation>().detected = true;
             }
+            else if (hit.transform.tag == "Barrel") // FIXME: temporary implementation
+            {
+                hit.transform.GetComponent<ExplodingBarrel>().TakeDamage(damage);
+            }
             else
             {
                 Debug.Log("You missed the enemy"); //This isnt displaying, probably because it's not hitting anything, nothing to compare against (EDIT: I knew that, i was just putting in a fit just incase)

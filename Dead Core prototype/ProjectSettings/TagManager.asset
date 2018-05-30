@@ -7,6 +7,7 @@ TagManager:
   - Enemy
   - HP_Small
   - HP_Large
+  - Barrel
   layers:
   - Default
   - TransparentFX
