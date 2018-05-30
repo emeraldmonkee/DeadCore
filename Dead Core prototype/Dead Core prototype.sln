@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio for Mac
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dead Core prototype", "Assembly-CSharp.csproj", "{2418D46B-B779-A0E5-38AC-46A7F05C3F91}"
 EndProject
 Global
