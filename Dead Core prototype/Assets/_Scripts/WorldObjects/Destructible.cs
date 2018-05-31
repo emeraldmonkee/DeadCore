@@ -2,18 +2,18 @@
 
 public class Destructible : MonoBehaviour, IDestroyable, IDamageable<float>
 {
-    public float StartHealth { get; set; }
-    public float CurrentHealth { get; set; }
+    [SerializeField] private float startHealth;
+    [SerializeField] private float currentHealth;
 
     private void Start()
     {
-        CurrentHealth = StartHealth;
+        currentHealth = startHealth;
     }
 
     public virtual void TakeDamage(float amount)
     {
-        CurrentHealth -= amount;
-        if (CurrentHealth <= 0)
+        currentHealth -= amount;
+        if (currentHealth <= 0)
             Destroy();
     }
 

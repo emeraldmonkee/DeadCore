@@ -5,8 +5,6 @@
 
 public interface IDamageable<T>
 {
-    T StartHealth { get; set; }
-    T CurrentHealth { get; set; }
     void TakeDamage(T amount);
 }
 
