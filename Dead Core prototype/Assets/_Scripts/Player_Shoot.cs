@@ -27,8 +27,8 @@ public class Player_Shoot : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(muzzle.transform.position, muzzle.transform.forward, out hit))
         {
-            
-            Object.Instantiate(impact_Prefab, hit.transform);
+
+            Instantiate(impact_Prefab, hit.point, Quaternion.identity);
             if(hit.transform.tag == "Enemy")
             {
                 Debug.Log("You hit the enemy");
