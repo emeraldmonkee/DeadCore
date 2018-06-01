@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Enemy_Health : MonoBehaviour
 {
     //TODO
-    //Figure out a way to stop canvas rotating - Sort of done but not perfect yet, perhaps find altrnative or updated solution - see FreezeCanvasRotation script
+    //Figure out a way to stop canvas rotating - Sort of done but not perfect yet, perhaps find alternative or updated solution - see FreezeCanvasRotation script
     //Add health pickup, remember to call the function below
 
     public float startHealth;
