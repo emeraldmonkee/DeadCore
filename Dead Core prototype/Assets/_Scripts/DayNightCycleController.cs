@@ -11,26 +11,48 @@ public class DayNightCycleController : MonoBehaviour
     public Text timeOfDayText;
     //public Quaternion rotation;
 
-    void Start ()
+    void Start()
     {
         xSpeed = 10;
         //rotation = new Quaternion(90, -30, 0, 0); //Only useful when you wan to set the starting time
-	}
-	
-	// The rotation needs sorting i.e. making it go from 1 - 360 rather than up and down and up again.
-	void Update ()
+    }
+
+    // The rotation needs sorting i.e. making it go from 1 - 360 rather than up and down and up again.
+    void Update()
     {
         timeOfDayText.text = "" + Mathf.Round(hour) + ":00";//Sort out second half, figure out algorithm to get minutes out
         dayNightLight.transform.Rotate(xSpeed * Time.deltaTime, 0, 0);
-        if (dayNightLight.transform.eulerAngles.x > 0)
+        //float angle = Mathf.Atan(dayNightLight.transform.rotation.y, dayNightLight.transform.rotation.x) * Mathf.Rad2Deg;
+        //float angle = dayNightLight.transform.eulerAngles.x;
+        //dayNightLight.transform.eulerAngles = new Vector3(Mathf.Clamp(transform.rotation.eulerAngles.x, 1, 360), transform.rotation.eulerAngles.y, transform.rotation.eulerAngles.z);
+        /*if (angle < 0)
         {
-            hour = dayNightLight.transform.eulerAngles.x / 15;
+            angle += 360;
         }
-        else
+        if (angle > 90 && angle < 180)
         {
-            hour = (dayNightLight.transform.eulerAngles.x + 360) / 15;
+            angle += 90;
         }
-        Debug.Log(dayNightLight.transform.eulerAngles.x);
-        Debug.Log(hour);
-	}
+        /*else if (angle > 90)
+        {
+            angle -= 180;
+        }*/
+        
+        Vector3 angle = GetAngle(dayNightLight.transform.rotation);
+        if (angle.x < 0)
+        {
+            angle.x += 360;
+        }
+        hour = angle.x / 15;
+        Debug.Log(angle.x);
+    }
+
+    public Vector3 GetAngle(Quaternion rotation)
+    {
+        float angle = Mathf.Atan2(2 * rotation.x * rotation.w - 2 * rotation.y * rotation.z, 1 - 2 * rotation.x * rotation.x - 2 * rotation.z * rotation.z);
+        angle += Mathf.PI;
+        angle /= 2f * Mathf.PI;
+        angle *= 100f;
+        return new Vector3(angle, 0, 0);
+    }
 }
