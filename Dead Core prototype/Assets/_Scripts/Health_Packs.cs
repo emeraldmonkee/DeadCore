@@ -7,11 +7,13 @@ public class Health_Packs : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 100;
     [SerializeField]
-    private float HP_Small = 10;
-    [SerializeField]
-    private float HP_Large = 50;
+    private GameObject gameManager;
 
-	
+	void Start()
+	{
+        gameManager = GameObject.FindGameObjectWithTag("Game_Manager");
+	}
+
 	void Update ()
     {
         transform.Rotate(0,Time.deltaTime*rotationSpeed,0);
@@ -21,12 +23,12 @@ public class Health_Packs : MonoBehaviour
         if(this.gameObject.tag == "HP_Small" && other.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-            other.gameObject.GetComponent<Player_Health>().IncreaseHealth(HP_Small);
+            gameManager.GetComponent<HP_Manager>().AddSmallHP();
         }
         if (this.gameObject.tag == "HP_Large" && other.gameObject.tag == "Player")
         {
             Destroy(this.gameObject);
-            other.gameObject.GetComponent<Player_Health>().IncreaseHealth(HP_Large);
+            gameManager.GetComponent<HP_Manager>().AddLargeHP();
         }
     }
 }

@@ -8,17 +8,19 @@ public class Player_Shoot : MonoBehaviour
 
     public GameObject muzzle;
     public GameObject impact_Prefab;
-
-	void Start ()
-    {
-		
-	}
 	
 	void Update ()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Pause_Menu_Script.isPaused == false)
         {
-            Shoot();
+            if (Inventory_UI.inventoryIsActive == false)
+            {
+                if (Input.GetButtonDown("Fire1"))
+                {
+                    Shoot();
+                }
+            }
+
         }
 	}
 

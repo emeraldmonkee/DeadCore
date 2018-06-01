@@ -8,6 +8,7 @@ TagManager:
   - HP_Small
   - HP_Large
   - Barrel
+  - Game_Manager
   layers:
   - Default
   - TransparentFX

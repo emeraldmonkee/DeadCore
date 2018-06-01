@@ -18,13 +18,16 @@ public class Move_Script : MonoBehaviour
 
     void Update ()
     {
-        //Player moves
-        CharacterController controller = GetComponent<CharacterController>();
-        moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
-        moveDirection = transform.TransformDirection(moveDirection);
-        moveDirection *= speed;
-        moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
+        if(Inventory_UI.inventoryIsActive == false)
+        {
+            //Player moves
+            CharacterController controller = GetComponent<CharacterController>();
+            moveDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+            moveDirection.y -= gravity * Time.deltaTime;
+            controller.Move(moveDirection * Time.deltaTime);
+        }
 
         //Sets camera position
         playerCam.transform.position = new Vector3(transform.position.x, 15, transform.position.z);
