@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// TODO choose between this and V2
 public class DayNightCycleController : MonoBehaviour
 {
     public GameObject dayNightLight;
@@ -14,13 +15,13 @@ public class DayNightCycleController : MonoBehaviour
     void Start()
     {
         xSpeed = 10;
-        //rotation = new Quaternion(90, -30, 0, 0); //Only useful when you wan to set the starting time
+        //rotation = new Quaternion(90, -30, 0, 0); //Only useful when you want to set the starting time
     }
 
-    // The rotation needs sorting i.e. making it go from 1 - 360 rather than up and down and up again.
+    // TODO The rotation needs sorting i.e. making it go from 1 - 360 rather than up and down and up again.
     void Update()
     {
-        timeOfDayText.text = "" + Mathf.Round(hour) + ":00";//Sort out second half, figure out algorithm to get minutes out
+        timeOfDayText.text = "" + Mathf.Round(hour) + ":00";//TODO Sort out second half, figure out algorithm to get minutes out
         dayNightLight.transform.Rotate(xSpeed * Time.deltaTime, 0, 0);
         //float angle = Mathf.Atan(dayNightLight.transform.rotation.y, dayNightLight.transform.rotation.x) * Mathf.Rad2Deg;
         //float angle = dayNightLight.transform.eulerAngles.x;
@@ -37,7 +38,7 @@ public class DayNightCycleController : MonoBehaviour
         {
             angle -= 180;
         }*/
-        
+
         Vector3 angle = GetAngle(dayNightLight.transform.rotation);
         if (angle.x < 0)
         {
@@ -55,4 +56,5 @@ public class DayNightCycleController : MonoBehaviour
         angle *= 100f;
         return new Vector3(angle, 0, 0);
     }
+
 }
