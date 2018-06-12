@@ -18,17 +18,22 @@ public class Basic_Enemy_Navigation : MonoBehaviour
 
     NavMeshAgent _navMeshAgent;
 
-	void Start ()
+    void Start()
     {
         thisGameObject = this.gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         playerPosition = player.transform;
         _navMeshAgent = this.GetComponent<NavMeshAgent>();
-	}
+    }
 
     //Calculates the distance between this enemy and the player
     private void Update()
     {
+        if (player == null)
+        {
+            return;
+        }
+
         distance = Vector3.Distance(thisGameObject.transform.position, player.transform.position);
         if (distance < detectionRange)
         {
@@ -47,7 +52,7 @@ public class Basic_Enemy_Navigation : MonoBehaviour
     //Sets the desination of the enemy to the player
     void SetDestination()
     {
-        if(playerPosition != null)
+        if (playerPosition != null)
         {
             Vector3 targetVector = playerPosition.transform.position;
             _navMeshAgent.SetDestination(targetVector);

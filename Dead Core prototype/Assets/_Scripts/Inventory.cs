@@ -5,19 +5,22 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
+    public float WeaponRange { get { return _weaponInventory[_currentSlot].Range; } }
+
+    [Header("Weapons")]
     [SerializeField] private int _maxSize;
+    [SerializeField, ReadOnly] private int _currentSlot;
+    [SerializeField] private Weapon[] _weaponInventory;
 
-
-    private Weapon[] _inventory;
-    private int _currentSlot;
-
+    //[Header("Items")]
+    //[SerializeField] private Item[] _itemInventory;
 
 
     private void Start()
     {
-        if (_inventory == null || _inventory.Length == 0)
+        if (_weaponInventory == null || _weaponInventory.Length == 0)
         {
-            _inventory = new Weapon[_maxSize];
+            _weaponInventory = new Weapon[_maxSize];
             _currentSlot = 0;
         }
     }
@@ -31,9 +34,9 @@ public class Inventory : MonoBehaviour
         // Finds the first available space.
         for (int i = 0; i < _maxSize; i++)
         {
-            if (_inventory[i] == null)
+            if (_weaponInventory[i] == null)
             {
-                _inventory[i] = weapon;
+                _weaponInventory[i] = weapon;
                 return;
             }
         }
@@ -49,10 +52,10 @@ public class Inventory : MonoBehaviour
     {
         for (int i = 0; i < _maxSize; i++)
         {
-            if (_inventory[i] == weapon)
+            if (_weaponInventory[i] == weapon)
             {
-                Weapon w = _inventory[i];
-                _inventory = null;
+                Weapon w = _weaponInventory[i];
+                _weaponInventory = null;
                 return w;
             }
         }
@@ -66,12 +69,26 @@ public class Inventory : MonoBehaviour
     /// </summary>
     public void Fire()
     {
-        if (_inventory[_currentSlot] != null)
+        if (_weaponInventory[_currentSlot] != null)
         {
-            _inventory[_currentSlot].Fire();
+            _weaponInventory[_currentSlot].Fire();
         }
+        else
+        {
+            Debug.Log("Could not fire the weapon because it does not exist in the inventory.");
+        }
+    }
 
-        Debug.Log("Could not fire the weapon because it does not exist in the inventory.");
+    public void Reload()
+    {
+        if (_weaponInventory[_currentSlot] != null)
+        {
+            _weaponInventory[_currentSlot].Reload(false);
+        }
+        else
+        {
+            Debug.Log("Could not reload the weapon because it does not exist in the inventory.");
+        }
     }
 
     /// <summary>
@@ -82,9 +99,9 @@ public class Inventory : MonoBehaviour
     /// <returns></returns>
     public void AddAmmo(int amount, AmmoType type)
     {
-        if (_inventory[_currentSlot] != null)
+        if (_weaponInventory[_currentSlot] != null)
         {
-            _inventory[_currentSlot].AddAmmo(amount, type);
+            _weaponInventory[_currentSlot].AddAmmo(amount, type);
         }
     }
 
@@ -99,7 +116,7 @@ public class Inventory : MonoBehaviour
         {
             _currentSlot++;
 
-            if (_currentSlot >= _inventory.Length)
+            if (_currentSlot >= _weaponInventory.Length)
             {
                 _currentSlot = 0;
             }
@@ -112,7 +129,7 @@ public class Inventory : MonoBehaviour
 
             if (_currentSlot < 0)
             {
-                _currentSlot = _inventory.Length - 1;
+                _currentSlot = _weaponInventory.Length - 1;
             }
         }
     }

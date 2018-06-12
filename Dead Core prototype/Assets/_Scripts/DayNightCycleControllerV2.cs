@@ -5,23 +5,36 @@ using UnityEngine.UI;
 
 public class DayNightCycleControllerV2 : MonoBehaviour
 {
+    [Header("References")]
     [SerializeField]
     private GameObject _dayNightLight;
+    [SerializeField]
+    private Text _timeOfDayText;
+
+    [Header("Properties")]
     [SerializeField, Tooltip("The amount of game-minutes that pass every second")]
     private float _speedOfTime;
     [SerializeField]
-    private Text _timeOfDayText;
+    private AnimationCurve _brightnessCurve;
     [SerializeField]
     private Display _displayMode;
 
+    [Header("Debug")]
+    [SerializeField, ReadOnly]
+    private TOD _TimeOfDay;
     [SerializeField, ReadOnly]
     private float _totalMinutes;
+    [SerializeField, ReadOnly]
+    private float _dayPercentage;
     [SerializeField, ReadOnly]
     private int _daysSinceStart;
 
 
+
+
     private void Update()
     {
+        _speedOfTime = Mathf.Abs(_speedOfTime);
         _totalMinutes += _speedOfTime * Time.deltaTime;
 
         // There are 1,440 minutes in a 24-hour day.
@@ -33,8 +46,20 @@ public class DayNightCycleControllerV2 : MonoBehaviour
         }
 
         // Calculates the percentage through the day it currently is, then multiplies that by the maximum rotation, 360.
-        float angleOfSun = (_totalMinutes / 1440f) * 360f;
+        _dayPercentage = _totalMinutes / 1440f;
+        float angleOfSun = _dayPercentage * 360f;
+
         _dayNightLight.transform.eulerAngles = new Vector3(angleOfSun - 90f, 0f, 0f); // TODO allow any Y-rotation, atm it makes the light flicker after midday
+        _dayNightLight.GetComponent<Light>().intensity = _brightnessCurve.Evaluate(_dayPercentage);
+
+        if (_dayPercentage >= 0.25f && _dayPercentage <= 0.875f)
+        {
+            _TimeOfDay = TOD.Day;
+        }
+        else
+        {
+            _TimeOfDay = TOD.Night;
+        }
 
         DisplayTime();
     }
@@ -72,4 +97,10 @@ public class DayNightCycleControllerV2 : MonoBehaviour
         Hour_24,
         Hour_12
     }
+    private enum TOD
+    {
+        Day,
+        Night
+    }
+
 }

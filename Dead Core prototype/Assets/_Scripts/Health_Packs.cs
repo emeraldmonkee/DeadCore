@@ -5,30 +5,14 @@ using UnityEngine;
 public class Health_Packs : MonoBehaviour
 {
     [SerializeField]
-    private float rotationSpeed = 100;
-    [SerializeField]
-    private GameObject gameManager;
+    private float _healthAmount = 100;
 
-	void Start()
-	{
-        gameManager = GameObject.FindGameObjectWithTag("Game_Manager");
-	}
-
-	void Update ()
-    {
-        transform.Rotate(0,Time.deltaTime*rotationSpeed,0);
-	}
     private void OnTriggerEnter(Collider other)
     {
-        if(this.gameObject.tag == "HP_Small" && other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
-            Destroy(this.gameObject);
-            gameManager.GetComponent<HP_Manager>().AddSmallHP();
-        }
-        if (this.gameObject.tag == "HP_Large" && other.gameObject.tag == "Player")
-        {
-            Destroy(this.gameObject);
-            gameManager.GetComponent<HP_Manager>().AddLargeHP();
+            other.GetComponent<Player_Health>().IncreaseHealth(_healthAmount);
+            Destroy(gameObject);
         }
     }
 }

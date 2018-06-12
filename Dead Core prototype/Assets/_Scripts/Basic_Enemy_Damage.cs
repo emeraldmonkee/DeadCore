@@ -22,10 +22,15 @@ public class Basic_Enemy_Damage : MonoBehaviour
     }
     private void Update()
     {
+        if (player == null)
+        {
+            return;
+        }
+
         distance = Vector3.Distance(thisGameObject.transform.position, player.transform.position);
         if (distance < damageRadius)
         {
-            canDamage = true;  
+            canDamage = true;
         }
         else
         {
@@ -34,7 +39,7 @@ public class Basic_Enemy_Damage : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if(canDamage == true)
+        if (canDamage == true)
         {
             if (hitReset == 1)
             {

@@ -4,26 +4,28 @@ using UnityEngine;
 
 public class Laser_Script : MonoBehaviour
 {
+    [SerializeField] private Weapon _weapon;
+    private float _range;
 
     private LineRenderer lr;
 
-	void Start ()
+    void Start()
     {
         lr = GetComponent<LineRenderer>();
-	}
+        _range = _weapon.Range;
+    }
 
-	void Update ()
+    void Update()
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(transform.position,transform.forward, out hit))
+        // Default Laser.
+        lr.SetPosition(1, new Vector3(0f, 0f, _range));
+
+        // Checks if anything is blocking the laser
+        if (Physics.Raycast(transform.position, transform.forward, out hit, _range))
         {
             lr.SetPosition(1, new Vector3(0, 0, hit.distance));
         }
-        else
-        {
-            lr.SetPosition(1, new Vector3(0, 0, 5000));
-        }
-
-	}
+    }
 }

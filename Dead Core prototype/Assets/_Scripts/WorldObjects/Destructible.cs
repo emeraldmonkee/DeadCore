@@ -19,6 +19,6 @@ public class Destructible : MonoBehaviour, IDestroyable, IDamageable<float>
 
     public virtual void Destroy()
     {
-        GameObject.Destroy(gameObject);
+        Destroy(gameObject);
     }
 }

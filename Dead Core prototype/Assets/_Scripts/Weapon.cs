@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    public float Range { get { return _range; } }
+
+    [Header("References")]
+    [SerializeField] private GameObject _muzzle;
+    [SerializeField] private GameObject _hitPrefab;
+
+
     [Header("Firing")]
     [SerializeField, Tooltip("Bullets / Second")] private float _fireRate;
     [SerializeField] private FireMode _fireMode;
@@ -20,22 +27,32 @@ public class Weapon : MonoBehaviour
 
 
     [Header("Audio Feedback")]
+    [SerializeField] private AudioSource _source;
     [SerializeField] private AudioClip _fireAudio;
     [SerializeField] private AudioClip _reloadAudio;
     [SerializeField] private AudioClip _emptyClipAudio;
 
 
-    private float _timeBetweenShots;
-    private float _timeSinceLastFired;
-    private int _currentAmmo;
-    private int _amountLeftInClip;
-    private bool _isReloading;
-
+    [Header("Debugging")]
+    [SerializeField, ReadOnly] private int _currentAmmo;
+    [SerializeField, ReadOnly] private int _amountLeftInClip;
+    [SerializeField, ReadOnly] private float _timeBetweenShots;
+    [SerializeField, ReadOnly] private float _timeSinceLastFired;
+    [SerializeField, ReadOnly] private bool _isReloading;
 
 
     private void Start()
     {
         _timeBetweenShots = 1f / _fireRate;
+
+        _currentAmmo = _maxAmmo;
+        Reload(true);
+
+        // Will attempt to find an attached AudioSource if none was given.
+        if (_source == null)
+        {
+            _source = GetComponent<AudioSource>();
+        }
     }
 
     private void Update()
@@ -55,12 +72,12 @@ public class Weapon : MonoBehaviour
         switch (_fireMode)
         {
             case FireMode.Automatic:
-                if (!Input.GetButton("Fire")) // TODO Replace with actual FIRE button name.
+                if (!Input.GetButton("Fire1"))
                     return;
                 break;
 
             case FireMode.Semi_Automatic:
-                if (!Input.GetButtonDown("Fire")) // TODO Replace with actual FIRE button name.
+                if (!Input.GetButtonDown("Fire1"))
                     return;
                 break;
         }
@@ -71,44 +88,67 @@ public class Weapon : MonoBehaviour
             _timeSinceLastFired = 0f;
             _amountLeftInClip--;
 
+            // Attacks what is in the LOS (Line of sight).
+            RaycastHit hit;
+            if (Physics.Raycast(_muzzle.transform.position, _muzzle.transform.forward, out hit))
+            {
+                if (hit.distance <= _range)
+                {
+                    Instantiate(_hitPrefab, hit.point, Quaternion.identity);
+
+                    IDamageable<float> target = hit.transform.GetComponent<IDamageable<float>>();
+                    if (target != null)
+                    {
+                        target.TakeDamage(_damage);
+                    }
+                }
+            }
+            else
+            {
+                Instantiate(_hitPrefab, _muzzle.transform.position + (_muzzle.transform.forward * _range), Quaternion.identity);
+            }
+
             PlaySound(_fireAudio);
-            // TODO Attack the first thing that is in range.
-
-
         }
-        // Out of ammo.
-        else if (_timeSinceLastFired >= _timeBetweenShots && _amountLeftInClip == 0)
+        else if (_amountLeftInClip == 0)
         {
             PlaySound(_emptyClipAudio);
+            Debug.Log("Empty clip");
+        }
+        else
+        {
+            Debug.Log("Failed to fire");
         }
     }
 
     /// <summary>
     /// Reloads the weapon.
     /// </summary>
-    public void Reload()
+    public void Reload(bool instant)
     {
-        StartCoroutine(ReloadMe());
+        Debug.Log("Reloading...");
+        StartCoroutine(ReloadMe(instant));
     }
 
     /// <summary>
     /// Reloads the weapon.
     /// </summary>
     /// <returns></returns>
-    private IEnumerator ReloadMe()
+    private IEnumerator ReloadMe(bool instant)
     {
-        if (_isReloading && _amountLeftInClip != _clipCapacity)
+        if (!_isReloading && _amountLeftInClip != _clipCapacity)
         {
             _isReloading = true;
             PlaySound(_reloadAudio);
 
-            yield return new WaitForSeconds(_reloadTime);
+            if (!instant)
+                yield return new WaitForSeconds(_reloadTime);
 
             // Swaps out the clip.
             if (_currentAmmo >= _clipCapacity)
             {
+                _currentAmmo -= (_clipCapacity - _amountLeftInClip);
                 _amountLeftInClip = _clipCapacity;
-                _currentAmmo -= _clipCapacity;
             }
             else
             {
@@ -119,6 +159,8 @@ public class Weapon : MonoBehaviour
             _isReloading = false;
         }
 
+
+        Debug.Log("... Reloaded");
         yield return null;
     }
 
@@ -142,7 +184,10 @@ public class Weapon : MonoBehaviour
 
     public void PlaySound(AudioClip clip)
     {
-        // TODO Implement PlaySound() 
+        if (clip != null && _source != null)
+        {
+            _source.PlayOneShot(clip);
+        }
     }
 }
 
@@ -152,7 +197,8 @@ public enum AmmoType
     Pistol,
     AK,
     Pump_Shotgun,
-    Auto_Shotgun
+    Auto_Shotgun,
+    Sniper
 }
 
 public enum FireMode
