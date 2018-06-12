@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class HP_Manager : MonoBehaviour 
 {
@@ -11,7 +12,8 @@ public class HP_Manager : MonoBehaviour
     [SerializeField]
     private float HP_Large = 50;
 
-    //TODO: update the text UI of each button to show the number of HP.
+    public Text smallText;
+    public Text largeText;
 
     public GameObject player;
 
@@ -23,10 +25,12 @@ public class HP_Manager : MonoBehaviour
 	public void AddSmallHP()
     {
         small_HP_Total += 1;
+        UpdateUI();
     }
     public void AddLargeHP()
     {
         large_HP_Total += 1;
+        UpdateUI();
     }    
     public void ApplySmallHP()
     {
@@ -54,6 +58,11 @@ public class HP_Manager : MonoBehaviour
         {
             //play error sound
         }
+    }
 
+    void UpdateUI()
+    {
+        smallText.text = "Large HP: " + small_HP_Total;
+        largeText.text = "Small HP: " + large_HP_Total;
     }
 }
