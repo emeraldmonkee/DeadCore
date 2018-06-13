@@ -14,17 +14,18 @@ public class Enemy_Health : HealthComponent
 
     private void Awake()
     {
-        enemyCanvas.SetActive(false);
+        //enemyCanvas.SetActive(false);
     }
 
     public override sealed void TakeDamage(float damage)
     {
         base.TakeDamage(damage);
 
-        GetComponent<Basic_Enemy_Navigation>().detected = true;
+        GetComponent<Zombie_Sleeper_Navigation>().detected = true;
         _HPFlash = 1f;
     }
 
+    /*
     private void Update()
     {
         _HPFlash -= Time.deltaTime;
@@ -34,9 +35,9 @@ public class Enemy_Health : HealthComponent
         }
         else
         {
-            _HPFlash = 0f;
+            _HPFlash < 0f;
             enemyCanvas.SetActive(false);
         }
     }
-
+    */
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Basic_Enemy_Damage : MonoBehaviour
+public class Zombie_Sleeper_Damage : MonoBehaviour
 {
     private GameObject thisGameObject;
     private GameObject player;

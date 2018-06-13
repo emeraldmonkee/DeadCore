@@ -4,14 +4,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Basic_Enemy_Navigation : MonoBehaviour
+public class Zombie_Sleeper_Navigation : MonoBehaviour
 {
     private GameObject thisGameObject;
     private GameObject player;
-    private float distance;
+    private float distanceToPlayer;
 
     public bool detected = false;
     public float detectionRange = 5;
+
+    public float enemySpeed = 1;
 
     [SerializeField]
     Transform playerPosition;
@@ -34,15 +36,17 @@ public class Basic_Enemy_Navigation : MonoBehaviour
             return;
         }
 
-        distance = Vector3.Distance(thisGameObject.transform.position, player.transform.position);
-        if (distance < detectionRange)
+        distanceToPlayer = Vector3.Distance(thisGameObject.transform.position, player.transform.position);
+        if (distanceToPlayer < detectionRange)
         {
             detected = true;
         }
+        
     }
 
     private void FixedUpdate()
     {
+        _navMeshAgent.speed = enemySpeed;
         if (detected == true)
         {
             SetDestination();

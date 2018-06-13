@@ -12,6 +12,7 @@ public class Health_Packs : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             other.GetComponent<Player_Health>().IncreaseHealth(_healthAmount);
+            Destroy(this.gameObject);
         }
     }
 }
