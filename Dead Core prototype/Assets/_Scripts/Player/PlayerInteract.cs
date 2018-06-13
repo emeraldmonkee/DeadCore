@@ -21,9 +21,10 @@ public class PlayerInteract : MonoBehaviour
         Collider[] entityColliders = Physics.OverlapSphere(transform.position, interactRadius);
         for (int i = 0; i < entityColliders.Length; i++)
         {
-            if (entityColliders[i].GetComponent<Switch>())
+            IInteractable interactableObj = entityColliders[i].GetComponent<IInteractable>();
+            if (interactableObj != null)
             {
-                entityColliders[i].GetComponent<Switch>().Interact();
+                interactableObj.Interact();
                 return;
             }
         }
