@@ -8,8 +8,8 @@ public class Enemy_Health : HealthComponent
 {
     [Header("Display"), SerializeField]
     private GameObject enemyCanvas;
-    [SerializeField, ReadOnly]
-    private float _HPFlash = 0;
+    //[SerializeField, ReadOnly]
+    //private float _HPFlash = 0;
 
 
     private void Awake()
@@ -17,12 +17,12 @@ public class Enemy_Health : HealthComponent
         //enemyCanvas.SetActive(false);
     }
 
-    public override sealed void TakeDamage(float damage)
+    public override sealed void TakeDamage(float amount)
     {
-        base.TakeDamage(damage);
+        base.TakeDamage(amount);
 
         GetComponent<Zombie_Sleeper_Navigation>().detected = true;
-        _HPFlash = 1f;
+        //_HPFlash = 1f;
     }
 
     /*

@@ -13,7 +13,8 @@ public class Zombie_Sleeper_Navigation : MonoBehaviour
     public bool detected = false;
     public float detectionRange = 5;
 
-    public float enemySpeed = 1;
+    public int groupTotal = 1;
+    public float enemySpeed;
 
     [SerializeField]
     Transform playerPosition;
@@ -22,6 +23,7 @@ public class Zombie_Sleeper_Navigation : MonoBehaviour
 
     void Start()
     {
+        enemySpeed = 3;
         thisGameObject = this.gameObject;
         player = GameObject.FindGameObjectWithTag("Player");
         playerPosition = player.transform;
@@ -37,6 +39,7 @@ public class Zombie_Sleeper_Navigation : MonoBehaviour
         }
 
         distanceToPlayer = Vector3.Distance(thisGameObject.transform.position, player.transform.position);
+
         if (distanceToPlayer < detectionRange)
         {
             detected = true;

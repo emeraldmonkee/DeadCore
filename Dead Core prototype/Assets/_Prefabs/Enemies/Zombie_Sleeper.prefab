@@ -93,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1832385487648250}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 7.6}
+  m_LocalPosition: {x: 14.59, y: 1, z: 7.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 224197847104203862}
@@ -224,6 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detected: 0
   detectionRange: 4
+  groupTotal: 1
+  enemySpeed: 3
   playerPosition: {fileID: 0}
 --- !u!114 &114174711823131424
 MonoBehaviour:
@@ -289,7 +291,6 @@ MonoBehaviour:
   _maxHealth: 100
   _currentHealth: 0
   enemyCanvas: {fileID: 1073737749232092}
-  _HPFlash: 0
 --- !u!136 &136208218163614820
 CapsuleCollider:
   m_ObjectHideFlags: 1
