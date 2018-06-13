@@ -12,10 +12,6 @@ public class Inventory : MonoBehaviour
     [SerializeField, ReadOnly] private int _currentSlot;
     [SerializeField] private Weapon[] _weaponInventory;
 
-    //[Header("Items")]
-    //[SerializeField] private Item[] _itemInventory;
-
-
     private void Start()
     {
         if (_weaponInventory == null || _weaponInventory.Length == 0)
@@ -79,6 +75,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Reloads the currently active weapon.
+    /// </summary>
     public void Reload()
     {
         if (_weaponInventory[_currentSlot] != null)

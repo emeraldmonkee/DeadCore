@@ -226,12 +226,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _muzzle: {fileID: 1815933298046298}
-  _hitPrefab: {fileID: 1278151598599928, guid: c422a68b7f4abbe4b8ecb7adf1e687ea, type: 2}
+  _hitPrefabPoolName: Bullet_Impact
   _fireRate: 10
   _fireMode: 1
   _reloadTime: 1.5
   _damage: 7
-  _range: 5
+  _range: 15
   _ammoType: 1
   _maxAmmo: 300
   _clipCapacity: 40
@@ -241,6 +241,10 @@ MonoBehaviour:
   _emptyClipAudio: {fileID: 0}
   _currentAmmo: 0
   _amountLeftInClip: 0
+  _timeBetweenShots: 0
+  _timeSinceLastFired: 0
+  _isReloading: 0
+  _pool: {fileID: 0}
 --- !u!120 &120857327279349604
 LineRenderer:
   m_ObjectHideFlags: 1

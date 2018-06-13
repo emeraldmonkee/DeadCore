@@ -36,15 +36,21 @@ public class HealthComponent : MonoBehaviour, IDamageable<float>
     /// Increases the health of the entity
     /// </summary>
     /// <param name="amount"></param>
-    public void IncreaseHealth(float amount)
+    public bool IncreaseHealth(float amount)
     {
-        _currentHealth += amount;
-        if (_currentHealth >= _maxHealth)
+        if (_currentHealth < _maxHealth)
         {
-            _currentHealth = _maxHealth;
+            _currentHealth += amount;
+            if (_currentHealth >= _maxHealth)
+            {
+                _currentHealth = _maxHealth;
+            }
+
+            RefreshHealthBar();
+            return true;
         }
 
-        RefreshHealthBar();
+        return false;
     }
 
 

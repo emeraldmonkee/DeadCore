@@ -5,7 +5,8 @@ using UnityEngine;
 public class Autodeath : MonoBehaviour
 {
     [SerializeField] private float timeTilDeath;
-    private float timeLeft;
+    [SerializeField] private bool _destroyOnDie = true;
+    [SerializeField, ReadOnly] private float timeLeft;
 
     private void Awake()
     {
@@ -18,7 +19,19 @@ public class Autodeath : MonoBehaviour
 
         if (timeLeft <= 0)
         {
-            Destroy(gameObject);
+            if (_destroyOnDie)
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
         }
+    }
+
+    private void OnEnable()
+    {
+        timeLeft = timeTilDeath;
     }
 }

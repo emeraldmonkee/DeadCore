@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//TODO when the player shoots, it creates a impact_Prefab which automatically destroys itself. Change this process to a pool to remove the inherent memory leak.
 public class Player_Shoot : MonoBehaviour
 {
     public float damage = 10;

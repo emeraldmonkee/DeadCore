@@ -8,7 +8,8 @@ public class Weapon : MonoBehaviour
 
     [Header("References")]
     [SerializeField] private GameObject _muzzle;
-    [SerializeField] private GameObject _hitPrefab;
+    //[SerializeField] private GameObject _hitPrefab;
+    [SerializeField] private string _hitPrefabPoolName;
 
 
     [Header("Firing")]
@@ -39,10 +40,11 @@ public class Weapon : MonoBehaviour
     [SerializeField, ReadOnly] private float _timeBetweenShots;
     [SerializeField, ReadOnly] private float _timeSinceLastFired;
     [SerializeField, ReadOnly] private bool _isReloading;
-
+    [SerializeField, ReadOnly] private Pool _pool;
 
     private void Start()
     {
+        _pool = Pool.GetInstance(_hitPrefabPoolName);
         _timeBetweenShots = 1f / _fireRate;
 
         _currentAmmo = _maxAmmo;
@@ -88,13 +90,21 @@ public class Weapon : MonoBehaviour
             _timeSinceLastFired = 0f;
             _amountLeftInClip--;
 
+            GameObject hitPrefab = _pool.GetObject();
+
+
             // Attacks what is in the LOS (Line of sight).
             RaycastHit hit;
             if (Physics.Raycast(_muzzle.transform.position, _muzzle.transform.forward, out hit))
             {
                 if (hit.distance <= _range)
                 {
-                    Instantiate(_hitPrefab, hit.point, Quaternion.identity);
+                    if (hitPrefab != null)
+                    {
+                        hitPrefab.transform.position = hit.point;
+                        hitPrefab.transform.rotation = Quaternion.identity;
+                        //Instantiate(_hitPrefab, hit.point, Quaternion.identity);
+                    }
 
                     IDamageable<float> target = hit.transform.GetComponent<IDamageable<float>>();
                     if (target != null)
@@ -105,9 +115,15 @@ public class Weapon : MonoBehaviour
             }
             else
             {
-                Instantiate(_hitPrefab, _muzzle.transform.position + (_muzzle.transform.forward * _range), Quaternion.identity);
+                if (hitPrefab != null)
+                {
+                    hitPrefab.transform.position = _muzzle.transform.position + (_muzzle.transform.forward * _range);
+                    hitPrefab.transform.rotation = Quaternion.identity;
+                    //Instantiate(_hitPrefab, _muzzle.transform.position + (_muzzle.transform.forward * _range), Quaternion.identity);
+                }
             }
 
+            hitPrefab.SetActive(true);
             PlaySound(_fireAudio);
         }
         else if (_amountLeftInClip == 0)

@@ -199,20 +199,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _muzzle: {fileID: 1570679965473416}
-  _hitPrefab: {fileID: 1278151598599928, guid: c422a68b7f4abbe4b8ecb7adf1e687ea, type: 2}
+  _hitPrefabPoolName: Bullet_Impact
   _fireRate: 2
   _fireMode: 0
   _reloadTime: 1
   _damage: 10
-  _range: 5
+  _range: 15
   _ammoType: 0
   _maxAmmo: 60
   _clipCapacity: 7
+  _source: {fileID: 0}
   _fireAudio: {fileID: 0}
   _reloadAudio: {fileID: 0}
   _emptyClipAudio: {fileID: 0}
   _currentAmmo: 0
   _amountLeftInClip: 0
+  _timeBetweenShots: 0
+  _timeSinceLastFired: 0
+  _isReloading: 0
+  _pool: {fileID: 0}
 --- !u!114 &114425505717239758
 MonoBehaviour:
   m_ObjectHideFlags: 1

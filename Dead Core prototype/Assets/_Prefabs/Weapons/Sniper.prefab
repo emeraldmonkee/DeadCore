@@ -198,7 +198,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _muzzle: {fileID: 1282656187291952}
-  _hitPrefab: {fileID: 1278151598599928, guid: c422a68b7f4abbe4b8ecb7adf1e687ea, type: 2}
+  _hitPrefabPoolName: Bullet_Impact
   _fireRate: 0.4
   _fireMode: 0
   _reloadTime: 3
@@ -216,6 +216,7 @@ MonoBehaviour:
   _timeBetweenShots: 0
   _timeSinceLastFired: 0
   _isReloading: 0
+  _pool: {fileID: 0}
 --- !u!114 &114713243391139990
 MonoBehaviour:
   m_ObjectHideFlags: 1
