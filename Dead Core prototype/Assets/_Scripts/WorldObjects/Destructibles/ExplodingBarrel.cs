@@ -29,6 +29,7 @@ public class ExplodingBarrel : Destructible
 
     private void OnDrawGizmos()
     {
+        if (!UnityEditor.Selection.Contains(gameObject)) return;
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, blastRadius);
     }
