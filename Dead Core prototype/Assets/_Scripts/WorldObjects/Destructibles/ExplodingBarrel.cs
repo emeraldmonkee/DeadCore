@@ -18,6 +18,7 @@ public class ExplodingBarrel : Destructible
 
     private void DamageNearbyEntities()
     {
+        // TODO: Maybe add IDamageable interface to Enemy objects
         Collider[] entityColliders = Physics.OverlapSphere(transform.position, blastRadius);
         for (int i = 0; i < entityColliders.Length; i++)
         {

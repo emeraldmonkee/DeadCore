@@ -6,7 +6,13 @@ public class Door : MonoBehaviour, IInteractable
 {
     // TODO: Make interact radius a cube rather than a sphere
     [SerializeField] private float interactRadius = 1.0f;
-    private bool toggleLocked = true;
+    [SerializeField] private Animator animator;
+    [SerializeField] private bool isOpen = false;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     public virtual void Interact()
     {
@@ -15,8 +21,8 @@ public class Door : MonoBehaviour, IInteractable
 
     public virtual void OnSwitchInteract()
     {
-        toggleLocked = !toggleLocked;
-        gameObject.SetActive(toggleLocked);
+        isOpen = !isOpen;
+        animator.SetBool("Opened", isOpen);
     }
 
     public virtual void OnDrawGizmos()
