@@ -23,13 +23,15 @@ public class HealthComponent : MonoBehaviour, IDamageable<float>
     {
         _currentHealth -= amount;
 
+        RefreshHealthBar();
+
         if (_currentHealth <= 0)
         {
             Die();
             return;
         }
 
-        RefreshHealthBar();
+
     }
 
     /// <summary>

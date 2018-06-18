@@ -21,7 +21,8 @@ public class Enemy_Health : HealthComponent
     {
         base.TakeDamage(amount);
 
-        GetComponent<Zombie_Sleeper_Navigation>().detected = true;
+        //GetComponent<Zombie_Sleeper_Navigation>().detected = true;
+        GetComponent<Sleeper_AI>().detected = true;
         //_HPFlash = 1f;
     }
 
