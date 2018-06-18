@@ -14,7 +14,7 @@ public class Pool : MonoBehaviour
     [SerializeField] private GameObject _prefab;
 
 
-    private void Start()
+    private void Awake()
     {
         // Adds a reference to this pool.
         _instances.Add(this);
