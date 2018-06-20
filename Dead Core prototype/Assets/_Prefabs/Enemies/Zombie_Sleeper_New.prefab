@@ -154,14 +154,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 0}
   wakingAnimationTime: 0
-  wakingUpPeriod: 1
+  wakingUpPeriod: 4
   hitReset: 0
   damageToPlayer: 10
   secondsToWait: 1
   canDamage: 0
   damageRadius: 2
   detected: 0
-  detectionRange: 5
+  detectionRange: 10
+  chasingRange: 5
+  chasingPlayer: 0
 --- !u!114 &114230720053622516
 MonoBehaviour:
   m_ObjectHideFlags: 1

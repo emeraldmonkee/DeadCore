@@ -44,7 +44,7 @@ public class Wakingstate : State<Sleeper_AI>
         _owner.wakingAnimationTime = _owner.wakingAnimationTime + Time.deltaTime;
         if(_owner.wakingAnimationTime > _owner.wakingUpPeriod)
         {
-            _owner.stateMachine.ChangeState(Awakestate.Instance);
+            _owner.stateMachine.ChangeState(Patrol_State.Instance);
         }
     }
 }

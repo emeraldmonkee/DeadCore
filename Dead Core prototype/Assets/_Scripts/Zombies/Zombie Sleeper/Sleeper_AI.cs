@@ -14,10 +14,6 @@ public class Sleeper_AI : MonoBehaviour
     private GameObject thisGameObject;
     private GameObject player;
 
-
-    //The detection parameters
-
-
     //Used to find the trasnform of the player
     [SerializeField]
     Transform playerPosition;
@@ -36,8 +32,11 @@ public class Sleeper_AI : MonoBehaviour
     public bool canDamage;
     public float damageRadius;
     public bool detected = false;
-    public float detectionRange = 5;
-    private float distanceToPlayer; 
+    public float detectionRange = 10;
+    public float chasingRange = 5;
+    private float distanceToPlayer;
+    public bool chasingPlayer = false;
+
     void Start ()
     {
         stateMachine = new StateMachine<Sleeper_AI>(this);
@@ -62,6 +61,12 @@ public class Sleeper_AI : MonoBehaviour
         {
             detected = true;
         }
+
+        if (distanceToPlayer < chasingRange && stateMachine.CurrentState == Patrol_State.Instance)
+        {
+            chasingPlayer  = true;
+        }
+
 
         if (distanceToPlayer < damageRadius)
         {
@@ -106,8 +111,13 @@ public class Sleeper_AI : MonoBehaviour
     //Shows the detection range of the enemy
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
+        Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(this.transform.position, detectionRange);
+
+        Gizmos.color = Color.HSVToRGB(1f, 0.5f, 0f);
+        Gizmos.DrawWireSphere(this.transform.position, chasingRange);
+
+        Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(this.gameObject.transform.position, damageRadius);
     }
 }

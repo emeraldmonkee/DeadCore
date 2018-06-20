@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.17276844, g: 0.21589245, b: 0.2978263, a: 1}
+  m_IndirectSpecularColor: {r: 0.1727681, g: 0.21589208, b: 0.29782575, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -565,6 +565,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 305398862}
+--- !u!1 &346130200
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 346130202}
+  - component: {fileID: 346130201}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &346130201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346130200}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6d8abd8554d4ec59c60e881482cb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _connectivityRadius: 20
+  debugDrawRadius: 1
+--- !u!4 &346130202
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 346130200}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.45, y: 1, z: -8.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 23
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &399978309
 Prefab:
   m_ObjectHideFlags: 0
@@ -607,6 +649,10 @@ Prefab:
     - target: {fileID: 1912242245512176, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
       propertyPath: m_Name
       value: Zombie_Sleeper_New (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912242245512176, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
@@ -1126,6 +1172,48 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 694899596}
+--- !u!1 &737242560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 737242562}
+  - component: {fileID: 737242561}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &737242561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737242560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6d8abd8554d4ec59c60e881482cb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _connectivityRadius: 20
+  debugDrawRadius: 1
+--- !u!4 &737242562
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737242560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.65, y: 1, z: -16.07}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 24
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &761607486
 GameObject:
   m_ObjectHideFlags: 0
@@ -2172,6 +2260,10 @@ Prefab:
       propertyPath: m_Name
       value: Zombie_Sleeper_New (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1912242245512176, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
   m_IsPrefabParent: 0
@@ -2531,6 +2623,10 @@ Prefab:
       propertyPath: m_Name
       value: Zombie_Sleeper_New (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1912242245512176, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
   m_IsPrefabParent: 0
@@ -2851,6 +2947,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 79a74a8fbb787fa468760f3b714f3e2f, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1728947285
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1728947287}
+  - component: {fileID: 1728947286}
+  m_Layer: 0
+  m_Name: GameObject (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1728947286
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1728947285}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6d8abd8554d4ec59c60e881482cb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _connectivityRadius: 20
+  debugDrawRadius: 1
+--- !u!4 &1728947287
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1728947285}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.08, y: 1, z: 9.63}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 25
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1957074527
 GameObject:
   m_ObjectHideFlags: 0
@@ -2962,6 +3100,10 @@ Prefab:
     - target: {fileID: 1912242245512176, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
       propertyPath: m_Name
       value: Zombie_Sleeper_New (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912242245512176, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
@@ -3170,6 +3312,48 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2098056779
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2098056781}
+  - component: {fileID: 2098056780}
+  m_Layer: 0
+  m_Name: GameObject (3)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &2098056780
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2098056779}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc6d8abd8554d4ec59c60e881482cb1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _connectivityRadius: 20
+  debugDrawRadius: 1
+--- !u!4 &2098056781
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2098056779}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.67, y: 1, z: 16.06}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 26
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2105800085
 GameObject:
   m_ObjectHideFlags: 0
@@ -3301,6 +3485,10 @@ Prefab:
     - target: {fileID: 1912242245512176, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
       propertyPath: m_Name
       value: Zombie_Sleeper_New (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1912242245512176, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f3b1571b7d27a64cba190882d1ec824, type: 2}
