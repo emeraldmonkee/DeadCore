@@ -9,6 +9,7 @@ TagManager:
   - HP_Large
   - Barrel
   - Game_Manager
+  - WayPoint
   layers:
   - Default
   - TransparentFX

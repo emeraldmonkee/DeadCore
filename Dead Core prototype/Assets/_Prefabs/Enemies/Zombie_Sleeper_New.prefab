@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPosition: {fileID: 0}
+  _navMeshAgent: {fileID: 0}
   wakingAnimationTime: 0
   wakingUpPeriod: 4
   hitReset: 0
@@ -164,6 +165,13 @@ MonoBehaviour:
   detectionRange: 10
   chasingRange: 5
   chasingPlayer: 0
+  _isWaiting: 0
+  waitTime: 3
+  switchProb: 0.2
+  travelling: 0
+  waiting: 0
+  waitTimer: 0
+  wayPointsVisited: 0
 --- !u!114 &114230720053622516
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -304,7 +312,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 1
+  m_Speed: 3
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120

@@ -4,8 +4,6 @@ using UnityEngine;
 using System.Linq;
 using System.Text;
 
-namespace Assets.Code
-{
     public class Connected_WayPoints : MonoBehaviour
     {
         [SerializeField]
@@ -75,4 +73,3 @@ namespace Assets.Code
             }
         }
     }
-}
